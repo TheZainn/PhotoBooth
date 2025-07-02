@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Take Your Time Photobooth</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>📸 Take Your Time</h1>
+
+  <div class="layout">
+    <!-- QR Kode -->
+    <div class="side-box qr-box">
+        <div id="qrcode-canvas-container">
+          <!-- Canvas QR akan disisipkan di sini -->
+          <p class="qr-placeholder">QR akan muncul setelah foto selesai</p>
+        </div>
+      
+        <div class="qr-instructions">
+          <p><strong>📱 Petunjuk 1 (HP):</strong></p>
+          <ul>
+            <li>Tahan lama gambar hasil foto</li>
+            <li>Akan muncul pop-up</li>
+            <li>Pilih <strong>Download Image</strong></li>
+          </ul>
+          <img src="petunjuk-download.png" alt="Petunjuk Download" style="width:100%; max-width:200px; border-radius:8px; margin-bottom: 10px;" />
+          
+          <p><strong>📲 Petunjuk 2 (HP/Browser):</strong></p>
+          <ul>
+            <li>Tap ikon <strong>⋮</strong> di pojok kanan atas</li>
+            <li>Pilih ikon <strong>⬇️ Download</strong></li>
+          </ul>
+          <img src="petunjuk-download-2.png" alt="Petunjuk Download 2" style="width:100%; max-width:200px; border-radius:8px; margin-bottom: 10px;" />
+        </div>
+      </div>
+      
+      
+
+    <!-- Kamera -->
+    <div class="camera-container">
+      <video id="video" autoplay playsinline></video>
+      <div id="countdown" class="countdown"></div>
+      <div class="flex">
+          <div class="filter-controls">
+            <label for="filter">🎨 Filter:</label>
+            <select id="filter">
+              <option value="none">Normal</option>
+              <option value="grayscale(1)">Grayscale</option>
+              <option value="sepia(1)">Sepia</option>
+              <option value="invert(1)">Invert</option>
+              <option value="brightness(1.4)">Bright</option>
+            </select>
+          </div>
+    
+          <div class="filter-controls">
+            <label for="mirror">Mirror Kamera:</label>
+            <select id="mirror">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+      </div>
+
+      <div class="buttons">
+        <button id="start">🎬 Ambil Foto</button>
+        <button id="download" disabled>⬇️ Download</button>
+      </div>
+    </div>
+
+    <!-- Preview -->
+    <div id="preview" class="side-box preview-box"></div>
+  </div>
+
+  <div id="flash" class="flash"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrious/dist/qrious.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
