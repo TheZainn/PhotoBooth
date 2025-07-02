@@ -1,129 +1,168 @@
 body {
-  font-family: "Segoe UI", sans-serif;
-  background: #f0f2f5;
-  color: #333;
-  text-align: center;
-  margin: 0;
-  padding: 20px;
-}
-
-h1 {
-  margin-bottom: 20px;
-}
-
-.layout {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.camera-container {
-  position: relative;
-  max-width: 800px;
-  width: 100%;
-}
-
-video {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  object-fit: cover;
-  transform: scaleX(-1);
-}
-
-#countdown {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-size: 80px;
-  color: red;
-  transform: translate(-50%, -50%);
-  z-index: 5;
-}
-
-.flash {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: white;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s;
-  z-index: 999;
-}
-.flash.show {
-  opacity: 1;
-}
-
-.filter-controls {
-  margin-top: 10px;
-}
-
-select {
-  padding: 8px;
-  font-size: 16px;
-  margin-left: 10px;
-}
-
-.buttons {
-  margin-top: 10px;
-}
-button {
-  padding: 10px 20px;
-  margin: 0 5px;
-  font-size: 16px;
-  background: #4f46e5;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-button:disabled {
-  background: #bbb;
-}
-
-.side-box {
-  width: 250px;
-}
-
-.preview-box img {
-  width: 100%;
-  border-radius: 10px;
-  border: 2px solid #ccc;
-}
-
-.qr-box canvas {
-  width: 100%;
-  max-width: 200px;
-  text-height: bold;
-}
-
-.qr-instructions {
-  text-align: left;
-  font-size: 13px;
-  color: #444;
-  line-height: 1.5;
-  margin-top: 10px;
-  max-width: 220px;
-}
-
-.qr-instructions ul {
-  padding-left: 18px;
-  margin-bottom: 8px;
-}
-
-.qr-placeholder {
-  font-size: 13px;
-  color: #aaa;
-  margin-bottom: 10px;
-}
-
-.flex {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
+    font-family: "Segoe UI", sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+  
+  /* --- 3 Kolom Layout --- */
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* 25% - 50% - 25% */
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+    align-items: start;
+  }
+  
+  /* Bagian Kamera Tengah */
+  .camera-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  /* Video */
+  video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    transform: scaleX(-1); /* default mirror */
+  }
+  
+  #countdown {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 80px;
+    color: red;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+  }
+  
+  /* Flash */
+  .flash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 999;
+  }
+  .flash.show {
+    opacity: 1;
+  }
+  
+  /* Kontrol filter */
+  .filter-controls {
+    margin-top: 10px;
+  }
+  
+  select {
+    padding: 8px;
+    font-size: 16px;
+    margin-left: 10px;
+  }
+  
+  /* Tombol */
+  .buttons {
+    margin-top: 10px;
+  }
+  button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    font-size: 16px;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  button:disabled {
+    background: #bbb;
+  }
+  
+  /* QR dan Preview Sama Lebar */
+  .qr-box, .preview-box {
+    width: 100%;
+  }
+  
+  /* Preview Foto */
+  .preview-box img {
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+  }
+  
+  /* QR */
+  .qr-box canvas {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .qr-placeholder {
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 10px;
+  }
+  
+  .qr-instructions {
+    text-align: left;
+    font-size: 13px;
+    color: #444;
+    line-height: 1.5;
+    margin-top: 10px;
+    max-width: 220px;
+  }
+  
+  .qr-instructions ul {
+    padding-left: 18px;
+    margin-bottom: 8px;
+  }
+  
+  /* Flex helper */
+  .flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  /* --- RESPONSIVE HP SAJA --- */
+  @media (max-width: 600px) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
+  
+    .qr-instructions {
+      text-align: center;
+      max-width: 100%;
+    }
+  
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+  
+    button {
+      width: 100%;
+      max-width: 250px;
+    }
+  
+    .filter-controls {
+      margin-bottom: 10px;
+    }
+  }
+  
