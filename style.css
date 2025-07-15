@@ -16,7 +16,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr; /* 25% - 50% - 25% */
     gap: 30px;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: auto;
     align-items: start;
   }
@@ -28,13 +28,15 @@ body {
   }
   
   /* Video */
-  video {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    object-fit: cover;
-    transform: scaleX(-1); /* default mirror */
-  }
+video {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Atau 16 / 9, tergantung kamera */
+  height: auto;
+  border-radius: 10px;
+  transform: scaleX(-1); /* default mirror */
+  background: #000; /* fallback jika video belum tampil */
+}
+
   
   #countdown {
     position: absolute;
@@ -98,11 +100,16 @@ body {
   }
   
   /* Preview Foto */
-  .preview-box img {
-    width: 100%;
-    border-radius: 10px;
-    border: 2px solid #ccc;
-  }
+.preview-box img {
+  height: auto;         /* Atur tinggi tetap */
+  width: 100%;           /* Biarkan lebar menyesuaikan rasio */
+  
+  object-fit: cover;   /* Hindari crop, bisa juga 'cover' kalau ingin penuh */
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  background: #000;      /* Tambahkan latar belakang agar tampilan tetap rapi */
+}
+
   
   /* QR */
   .qr-box canvas {

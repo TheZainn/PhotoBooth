@@ -88,14 +88,16 @@ function showPreview() {
   finalCanvas.height = (photoHeight + spacing) * totalPhotos + bottomSpace;
   const ctx = finalCanvas.getContext("2d");
 
+  // Background putih
   ctx.fillStyle = "#fff";
   ctx.fillRect(0, 0, finalCanvas.width, finalCanvas.height);
 
+  // Gambar setiap foto ke dalam canvas final
   photoCanvases.forEach((canvas, i) => {
     ctx.drawImage(canvas, 20, i * (photoHeight + spacing));
   });
 
-  // Tambahkan teks
+  // Tambahkan teks di bawah foto
   ctx.fillStyle = "#000";
   ctx.font = "24px sans-serif";
   ctx.textAlign = "center";
@@ -111,17 +113,33 @@ function showPreview() {
     finalCanvas.height - 20
   );
 
-  // Hasil akhir sebagai data URL
-  const dataURL = finalCanvas.toDataURL();
+  // Buat data URL dari canvas final
+  const dataURL = finalCanvas.toDataURL("image/png");
+
+  // Tampilkan sebagai preview gambar dengan padding visual
   const img = new Image();
   img.src = dataURL;
+
+  // ✅ Tambahkan styling padding dan dekorasi
+  img.style.padding = "20px";
+  img.style.background = "#fff";
+  img.style.borderRadius = "10px";
+  img.style.boxShadow = "0 4px 10px rgba(0,0,0,0.1)";
+  img.style.maxWidth = "100%";
+  img.style.height = "auto";
+  img.style.display = "block";
+  img.style.margin = "20px auto";
+
   previewDiv.innerHTML = "";
   previewDiv.appendChild(img);
+
+  // Simpan untuk download
   downloadBtn.dataset.image = dataURL;
 
-  // Upload ke Cloudinary
+  // Upload ke Cloudinary dan tampilkan QR
   uploadImageToCloudinary(dataURL);
 }
+
 
 async function uploadImageToCloudinary(dataURL) {
   try {
