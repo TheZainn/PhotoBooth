@@ -8,7 +8,7 @@ const filterSelect = document.getElementById("filter");
 const qrDiv = document.getElementById("qrcode");
 
 const photoWidth = 640;
-const photoHeight = 360;
+const photoHeight = 480;
 const totalPhotos = 4;
 let photoCanvases = [];
 
